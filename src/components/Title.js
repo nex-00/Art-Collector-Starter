@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Create/export a component called Title which uses this static HTML as the template:
- * 
+ *
+ * The returned JSX Should look like:
  * <div id="title">
  *   <h1>
  *     The Art Collector
