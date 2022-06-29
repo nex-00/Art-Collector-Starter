@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="app">
       {/* The following Title component is static, doesn't need any props */}
-      {/* <Title /> */}
+      <Title />
       {/* The following Search component needs props for setIsLoading and setSearchResults (trigger <Loading /> on search start/end, and transfer results to preview) */}
       {/* <Search /> */}
       {/* The following Preview component needs props for searchResults, setIsLoading and setSearchResults (clicking prev/next buttons), and setFeaturedResult (clicking a preview) */}

@@ -6,15 +6,19 @@ You need to fix the following files:
 
 ### `./api/index.js`
 
-You need to set your API key!
+<!-- You need to set your API key! -->
 
 ### `./index.js` and `./components/index.js`
 
 First, the imports at the top of our root `index.js` won't work, since they aren't actually exported from `./components/index.js`. Go add 5 re-exports to that file.
 
+<!-- DID THIS -->
+
 ```js
-export { default as ExportName } from './FileName';
+export { default as ExportName } from "./FileName";
 ```
+
+<!-- DID THIS -->
 
 Also, we haven't used ReactDOM.render at the bottom of our main `index.js`! That allows the app to be "bootstrapped" into running inside our browser.
 
@@ -43,7 +47,7 @@ This file needs a ton of work, but thankfully the parts you need to do are comme
 
 ### `./components/Preview.js`
 
-This file also needs your help! 
+This file also needs your help!
 
 - Read off the props that were passed in by `<App />`
 - Create new stateful getters/setters with `useState`
@@ -53,7 +57,7 @@ This file also needs your help!
 
 ### `./components/Feature.js`
 
-This is the big test! You have to create two new components, `<Searchable />` and `<Feature />`. 
+This is the big test! You have to create two new components, `<Searchable />` and `<Feature />`.
 
 The first is internal use only, used as a "helper component" inside of `<Feature />`. `<Searchable />` as a component is for things in our feature which can start new searches (like clicking on a person's name, or a medium type, etc.). It will need to:
 
@@ -70,22 +74,19 @@ Then, `<Feature />` should:
 - Make sure to appropriately use [react fragments](https://reactjs.org/docs/fragments.html) or [react fragment short syntax](https://reactjs.org/docs/fragments.html#short-syntax) when you are pairing up the two spans per property
 - This is especially crucial when paired with a ternary... you can't have two siblings without a parent, but you don't always want a parent to render into the template. `React.Fragment` is a tag that doesn't render:
 
-    ```jsx
-    <li>
-    {
-      someVariable < 38
-      ? <React.Fragment>
-          <span>Hi</span>
-          <span>What</span>
-        </React.Fragment>
-      : null
-    }
-    </li>
-    ```
+  ```jsx
+  <li>
+    {someVariable < 38 ? (
+      <React.Fragment>
+        <span>Hi</span>
+        <span>What</span>
+      </React.Fragment>
+    ) : null}
+  </li>
+  ```
 
-    ## Part 3 - Deployment
+  ## Part 3 - Deployment
 
-    Once your app is up and running, run `npm run build`, and then deploy your build folder to Netlify!
+  Once your app is up and running, run `npm run build`, and then deploy your build folder to Netlify!
 
-    You've now got a working app.
-  
+  You've now got a working app.
