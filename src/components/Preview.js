@@ -11,7 +11,7 @@ const Preview = (props) => {
    *  Destructure setSearchResults, setFeaturedResult, and setIsLoading from props
    *  and also destructure info and records from props.searchResults
    *
-   * You need info, records, setSearchResults, setFeaturedResult, and setIsLoading as available constants
+   *  You need info, records, setSearchResults, setFeaturedResult, and setIsLoading as available constants
    */
 
   /**
