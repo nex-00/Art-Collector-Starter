@@ -5,9 +5,9 @@ import ReactDOM from "react-dom";
 import { Feature, Loading, Preview, Search, Title } from "./components";
 
 const App = () => {
-  const [searchResults, setSearchResults] = useState[{ info: {}, records: [] }];
-  const [featuredResult, setFeaturedResult] = useState[null];
-  const [isLoading, setIsLoading] = useState[false];
+  const [searchResults, setSearchResults] = useState({ info: {}, records: [] });
+  const [featuredResult, setFeaturedResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * This App component is our TOP LEVEL component. Any state which needs to be shared between immediate children should
@@ -18,14 +18,24 @@ const App = () => {
    * isLoading, setIsLoading (default should be false)
    */
 
+
   // * FOR THE FOLLOWING CODE, COMMENT YOUR COMPONENTS IN, AS YOU WORK ON THEM TO AVOID ERRORS BREAKING YOUR CODE!
   return (
     <div className="app">
       <Title />
       {/* The following Search component needs props for setIsLoading and setSearchResults (trigger <Loading /> on search start/end, and transfer results to preview) */}
-      {/* <Search /> */}
+      { <Search 
+      searchResults={searchResults} 
+      setIsLoading={setIsLoading} 
+      setSearchResult={setSearchResults} 
+      setFeaturedResult={setFeaturedResult}
+      /> }
       {/* The following Preview component needs props for searchResults, setIsLoading and setSearchResults (clicking prev/next buttons), and setFeaturedResult (clicking a preview) */}
-      {/* <Preview /> */}
+      { <Preview 
+         searchResults={searchResults} 
+         setIsLoading={setIsLoading} 
+         setSearchResult={setSearchResults} 
+         setFeaturedResult={setFeaturedResult} /> }
       {/* The following Feature component needs props for featuredResult,
        as well as setIsLoading and setSearchResults (clicking on searchable properties) */}
       {/* <Feature /> */}

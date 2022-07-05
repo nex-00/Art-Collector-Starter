@@ -4,7 +4,7 @@
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
 export const BASE_URL = "https://api.harvardartmuseums.org";
-export const KEY = "995d937e-a666-4cf5-ad7f-97e889524499";
+export const KEY = "apikey=995d937e-a666-4cf5-ad7f-97e889524499";
 
 /**
  * This will make a call to the API for a single term and value (e.g. "person", and "unknown"), and return the result

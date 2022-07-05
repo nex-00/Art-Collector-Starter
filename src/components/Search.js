@@ -10,17 +10,23 @@ import {
 } from "../api";
 
 const Search = (props) => {
+  const { setIsLoading, setSearchResults } = props;
   // Make sure to destructure setIsLoading and setSearchResults from the props
 
+  const [ centuryList, setCenturyList ] = useState([]);
+  const [ classificationList, setClassificationList ] = useState([]);
+  const [ queryString, setQueryString ] = useState("")
+  const [ century, setCentury ] = useState("any")
+  const [ classification, setClassification ] = useState("any")
+  
   /**
    * We are at the Search component, a child of app. This has a form, so we need to use useState for
    * our controlled inputs:
-   *
-   * centuryList, setCenturyList (default should be an empty array, [])
-   * classificationList, setClassificationList (default should be an empty array, [])
-   * queryString, setQueryString (default should be an empty string, '')
-   * century, setCentury (default should be the string 'any')
-   * classification, setClassification (default should be the string 'any')
+   * xxcenturyList, setCenturyList (default should be an empty array, [])
+   * xxclassificationList, setClassificationList (default should be an empty array, [])
+   *xx queryString, setQueryString (default should be an empty string, '')
+   * xxcentury, setCentury (default should be the string 'any')
+   * xxclassification, setClassification (default should be the string 'any')
    */
 
   /**
@@ -30,7 +36,13 @@ const Search = (props) => {
    *
    * Make sure to console.error on caught errors from the API methods.
    */
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    Promise.all([fetchAllCenturies(), fetchAllClassifications()]).then((result) => {
+      setCenturyList(result[0]);
+      setClassificationList(result[1]);
+    })
+  }, [])
 
   /**
    * This is a form element, so we need to bind an onSubmit handler to it which:
@@ -47,14 +59,24 @@ const Search = (props) => {
    * catch: error to console.error
    *
    * finally: call setIsLoading, set it to false
-   */
+   * * ******************************************************************************************************/
   return (
     <form
       id="search"
       onSubmit={async (event) => {
-        // write code here
+        event.preventDefault();
+        setIsLoading = true;
+        try {
+            fetchQueryResults({ century, classification, queryString })
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setIsLoading = false;
+        }
+        // LEFT OFF HERE write code here **********************************************************************************************************
       }}
     >
+      
       <fieldset>
         <label htmlFor="keywords">Query</label>
         <input
